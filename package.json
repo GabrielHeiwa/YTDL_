@@ -1,5 +1,5 @@
 {
-  "name": "YTDL_",
+  "name": "ytdl",
   "private": true,
   "workspaces": {
     "packages": [

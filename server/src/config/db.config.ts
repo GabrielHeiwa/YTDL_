@@ -11,4 +11,5 @@ export default mongoose.connect(URI, {
     useUnifiedTopology: true,
 }, (err) => {
     if (err) console.error(err);
+    console.log("Database connected with success");
 });

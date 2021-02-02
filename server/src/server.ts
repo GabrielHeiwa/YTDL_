@@ -2,9 +2,15 @@ import express from "express";
 import http from "http";
 import socket from "socket.io";
 import Routes from "./routes/routes.public";
+import cors from "cors";
+import morgan from "morgan";
 
-export default function Server() {
+function Server() {
     const app = express();
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+    app.use(cors());
+    app.use(morgan("dev"));
     app.use(Routes());
 
     const server = http.createServer(app);
@@ -12,7 +18,9 @@ export default function Server() {
     const io = new socket.Server(server);
 
     return {
-        server,
+        app,
         io,
     };
 }
+
+export default Server();
